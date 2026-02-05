@@ -1,0 +1,45 @@
+---
+description: Estándares SCSS y uso de colores/tipografía del design system
+globs: styles/**/*.scss
+alwaysApply: false
+---
+
+# Estándares SCSS — IB Style Modules
+
+## Colores
+
+Usar la función `color()` con claves del mapa:
+
+```scss
+// ✅ CORRECTO
+color: color(primary);
+background-color: color(gray-10);
+border-color: color(gray-50);
+
+// ❌ EVITAR (a menos que no exista variable)
+color: #333;
+```
+
+Claves principales: `primary`, `secondary`, `white`, `black`, `gray-10` a `gray-300`, `red-10` a `red-90`, `yellow-10`, `orange-10`, `green-10`, etc. Ver `_settings__colors.scss`.
+
+## Tipografía
+
+```scss
+// Variables de familia
+font-family: $font-normal;   // Texto cuerpo
+font-family: $font-special;  // Títulos
+font-family: $font-icons;    // Iconos
+font-family: $font-unusual;  // Maven Pro
+font-family: $font-text;     // Iberia Text
+```
+
+Tamaños: usar `rem(N)` con base 16px. Line-heights: numéricos (1.2, 1.5), porcentaje (120%) o rem/px según contexto.
+
+## Componentes
+
+- Clases con prefijo `ib-`.
+- BEM o variante: `.#{$wefront__namespace}componente__elemento--modificador`.
+
+## Importar settings
+
+Los componentes deben importar `_settings__config.scss` y `_settings__colors.scss` (o los entry points que los incluyan) para tener acceso a variables.

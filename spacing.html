@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IB Style Modules — Spacing (padding, gap, margin)</title>
+  <style>
+    :root {
+      --primary: #d7192d;
+      --secondary: #a80e1f;
+      --gray-10: #333;
+      --gray-50: #eee;
+      --gray-60: #fafafa;
+      --gray-135: #f9f9f9;
+      --gray-160: #112033;
+      --yellow-10: #fcd100;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: verdana, arial, helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.2;
+      color: var(--gray-10);
+      background: var(--gray-135);
+      min-height: 100vh;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(215, 25, 45, 0.25);
+    }
+    .header__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .header h1 { font-size: 1.75rem; font-weight: 700; }
+    .header p { opacity: 0.92; font-size: 0.95rem; margin-top: 0.35rem; }
+    .header__nav { margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .header__nav a {
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.1);
+    }
+    .header__nav a:hover { background: rgba(255,255,255,0.2); }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    section { margin-bottom: 3rem; }
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gray-160);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-50);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    section h2::before {
+      content: '';
+      width: 4px;
+      height: 1.1em;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      position: sticky;
+      top: 0;
+      background: var(--gray-135);
+      padding: 0.5rem 0;
+      z-index: 10;
+    }
+    .tab {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      background: #fff;
+      color: #555;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .tab:hover { background: #eee; color: #333; }
+    .tab.active { background: var(--primary); color: #fff; }
+    .section-content { display: none; }
+    .section-content.active { display: block; }
+    .spacing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .spacing-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid var(--gray-50);
+    }
+    .spacing-card__label {
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+      font-family: ui-monospace, monospace;
+      color: #777;
+      background: var(--gray-60);
+      border-top: 1px solid var(--gray-50);
+    }
+    .spacing-card__demo {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+    }
+    .spacing-card__demo-inner {
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .padding-demo .spacing-card__demo-inner { background: var(--primary); }
+    .margin-demo .spacing-card__demo { background: var(--gray-50); padding: 1rem; }
+    .margin-demo .spacing-card__demo-inner { background: var(--gray-160); margin: 0; }
+    .gap-demo .spacing-card__demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gap);
+    }
+    .gap-demo .spacing-card__demo-inner {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+      background: var(--primary);
+    }
+    .vars-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .vars-table th, .vars-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    .vars-table th {
+      background: #fafafa;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--gray-160);
+    }
+    .vars-table code { font-family: ui-monospace, monospace; font-size: 0.85em; }
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: var(--gray-160);
+      color: #fff;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .footer a { color: var(--yellow-10); text-decoration: none; }
+    .ib-showcase-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--yellow-10);
+      color: var(--gray-160);
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1>Spacing — IB Style Modules <span class="ib-showcase-badge">Design System</span></h1>
+      <p>Padding, gap y margin del design system</p>
+      <nav class="header__nav">
+        <a href="index.html">Showcase</a>
+        <a href="colors.html">Colores</a>
+        <a href="typography.html">Tipografía</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="vars" role="tab">Variables</button>
+      <button class="tab" data-tab="padding" role="tab">Padding</button>
+      <button class="tab" data-tab="margin" role="tab">Margin</button>
+      <button class="tab" data-tab="gap" role="tab">Gap</button>
+    </nav>
+
+    <section id="section-vars" class="section-content active">
+      <h2>Variables base</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Definidas en <code>_settings__config.scss</code> y <code>_settings__grid.scss</code></p>
+      <table class="vars-table">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Valor</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>$wefront__base-spacing</code></td>
+            <td>30</td>
+            <td>Espaciado base del grid (gutter)</td>
+          </tr>
+          <tr>
+            <td><code>$base_separation</code></td>
+            <td>16</td>
+            <td>Separación base entre elementos</td>
+          </tr>
+          <tr>
+            <td><code>$wefront__gutter-xl / lg / md / sm / sx</code></td>
+            <td>30</td>
+            <td>Gutter del grid por breakpoint</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top: 2rem;">Escala rem() usada en componentes</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Valores de padding/margin/gap más frecuentes (rem(N) ≈ N px con base 16)</p>
+      <div class="spacing-grid" style="margin-top: 1rem;">
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">0</span></div>
+          <div class="spacing-card__label">rem(0)</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">2–5</span></div>
+          <div class="spacing-card__label">rem(2) a rem(5)</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">8</span></div>
+          <div class="spacing-card__label">rem(8) — 8px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">10</span></div>
+          <div class="spacing-card__label">rem(10) — 10px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">12</span></div>
+          <div class="spacing-card__label">rem(12) — 12px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">16</span></div>
+          <div class="spacing-card__label">rem(16) — 16px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">20</span></div>
+          <div class="spacing-card__label">rem(20) — 20px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">24</span></div>
+          <div class="spacing-card__label">rem(24) — 24px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">30</span></div>
+          <div class="spacing-card__label">rem(30) — base-spacing</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">32</span></div>
+          <div class="spacing-card__label">rem(32) — 32px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">48</span></div>
+          <div class="spacing-card__label">rem(48) — 48px</div>
+        </div>
+        <div class="spacing-card">
+          <div class="spacing-card__demo"><span style="font-size: 0.75rem; color: #777;">64</span></div>
+          <div class="spacing-card__label">rem(64) — 64px</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-padding" class="section-content padding-demo">
+      <h2>Padding</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Caja roja = contenido; espacio blanco = padding</p>
+      <div class="spacing-grid" id="padding-grid"></div>
+    </section>
+
+    <section id="section-margin" class="section-content margin-demo">
+      <h2>Margin</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Fondo gris = contenedor; caja oscura = elemento con margin</p>
+      <div class="spacing-grid" id="margin-grid"></div>
+    </section>
+
+    <section id="section-gap" class="section-content gap-demo">
+      <h2>Gap</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Espacio entre cajas = gap (flex/grid)</p>
+      <div class="spacing-grid" id="gap-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Spacing definido en <code>_settings__config.scss</code> · <a href="index.html">Showcase</a> · <a href="colors.html">Colores</a> · <a href="typography.html">Tipografía</a>
+  </footer>
+
+  <script>
+    const spacingValues = [
+      { label: 'rem(4)', val: 4 },
+      { label: 'rem(8)', val: 8 },
+      { label: 'rem(10)', val: 10 },
+      { label: 'rem(12)', val: 12 },
+      { label: 'rem(16)', val: 16 },
+      { label: 'rem(20)', val: 20 },
+      { label: 'rem(24)', val: 24 },
+      { label: 'rem(30)', val: 30 },
+      { label: 'rem(32)', val: 32 },
+      { label: 'rem(48)', val: 48 },
+    ];
+
+    function px(v) { return (v / 16) + 'rem'; }
+
+    function renderPadding() {
+      const grid = document.getElementById('padding-grid');
+      grid.innerHTML = spacingValues.map(s => `
+        <div class="spacing-card">
+          <div class="spacing-card__demo" style="padding: ${px(s.val)};">
+            <div class="spacing-card__demo-inner" style="padding: ${px(s.val / 2)};">${s.label}</div>
+          </div>
+          <div class="spacing-card__label">padding: ${s.label}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderMargin() {
+      const grid = document.getElementById('margin-grid');
+      grid.innerHTML = spacingValues.map(s => `
+        <div class="spacing-card">
+          <div class="spacing-card__demo">
+            <div class="spacing-card__demo-inner" style="margin: ${px(s.val)};">${s.label}</div>
+          </div>
+          <div class="spacing-card__label">margin: ${s.label}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderGap() {
+      const grid = document.getElementById('gap-grid');
+      grid.innerHTML = spacingValues.map(s => `
+        <div class="spacing-card">
+          <div class="spacing-card__demo" style="--gap: ${px(s.val)};">
+            <div class="spacing-card__demo-inner"></div>
+            <div class="spacing-card__demo-inner"></div>
+            <div class="spacing-card__demo-inner"></div>
+            <div class="spacing-card__demo-inner"></div>
+            <div class="spacing-card__demo-inner"></div>
+            <div class="spacing-card__demo-inner"></div>
+          </div>
+          <div class="spacing-card__label">gap: ${s.label}</div>
+        </div>
+      `).join('');
+    }
+
+    renderPadding();
+    renderMargin();
+    renderGap();
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.dataset.tab;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('section-' + tabId).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

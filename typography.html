@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IB Style Modules — Tipografía</title>
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d7192d;
+      --secondary: #a80e1f;
+      --gray-10: #333;
+      --gray-50: #eee;
+      --gray-135: #f9f9f9;
+      --gray-160: #112033;
+      --yellow-10: #fcd100;
+      --white: #fff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: verdana, arial, helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.2;
+      color: var(--gray-10);
+      background: var(--gray-135);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(215, 25, 45, 0.25);
+    }
+
+    .header__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .header p {
+      opacity: 0.92;
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    .header__nav {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .header__nav a {
+      color: rgba(255, 255, 255, 0.95);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header__nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gray-160);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-50);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    section h2::before {
+      content: '';
+      width: 4px;
+      height: 1.1em;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      position: sticky;
+      top: 0;
+      background: var(--gray-135);
+      padding: 0.5rem 0;
+      z-index: 10;
+    }
+
+    .tab {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: inherit;
+      border: none;
+      border-radius: 8px;
+      background: #fff;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .tab:hover {
+      background: #eee;
+      color: #333;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .section-content {
+      display: none;
+    }
+
+    .section-content.active {
+      display: block;
+    }
+
+    .typography-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .typography-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border: 1px solid #eee;
+    }
+
+    .typography-card__preview {
+      padding: 1.5rem;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .typography-card__meta {
+      padding: 0.75rem 1rem;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+      font-size: 0.75rem;
+      font-family: ui-monospace, monospace;
+      color: #777;
+    }
+
+    .typography-card__meta span {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .typography-card__meta span:last-child {
+      margin-bottom: 0;
+    }
+
+    .ib-showcase-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--yellow-10);
+      color: var(--gray-160);
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+    .family-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .family-table th,
+    .family-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .family-table th {
+      background: #fafafa;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #112033;
+    }
+
+    .family-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .family-table .family-preview {
+      font-size: 1.125rem;
+    }
+
+    .size-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .size-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    .size-item__label {
+      min-width: 120px;
+      font-size: 0.75rem;
+      font-family: ui-monospace, monospace;
+      color: #777;
+    }
+
+    .size-item__preview {
+      flex: 1;
+      color: #333;
+    }
+
+    .line-height-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .lh-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      border: 1px solid #eee;
+    }
+
+    .lh-card__preview {
+      font-size: 0.875rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .lh-card__value {
+      font-size: 0.7rem;
+      font-family: ui-monospace, monospace;
+      color: #777;
+    }
+
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: var(--gray-160);
+      color: #fff;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--yellow-10);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1>Tipografía IB Style Modules <span class="ib-showcase-badge">Design System</span></h1>
+      <p>Families, sizes y line-heights del proyecto</p>
+      <nav class="header__nav">
+        <a href="index.html">Showcase</a>
+        <a href="colors.html">Colores</a>
+        <a href="spacing.html">Spacing</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="families" role="tab">Font Families</button>
+      <button class="tab" data-tab="sizes" role="tab">Font Sizes</button>
+      <button class="tab" data-tab="lineheights" role="tab">Line Heights</button>
+    </nav>
+
+    <section id="section-families" class="section-content active">
+      <h2>Font Families</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Variables definidas en <code>styles/scss/settings/_settings__config.scss</code></p>
+      <table class="family-table">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Valor</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>$font-normal</code></td>
+            <td>verdana, arial, helvetica, sans-serif</td>
+            <td class="family-preview" style="font-family: verdana, arial, helvetica, sans-serif;">The quick brown fox jumps over the lazy dog. 0123456789</td>
+          </tr>
+          <tr>
+            <td><code>$font-special</code></td>
+            <td>'iberiaheadline', $font-normal</td>
+            <td class="family-preview" style="font-family: 'Maven Pro', verdana, sans-serif;">The quick brown fox — Iberia Headline</td>
+          </tr>
+          <tr>
+            <td><code>$font-unusual</code></td>
+            <td>'mavenpro'</td>
+            <td class="family-preview" style="font-family: 'Maven Pro', sans-serif;">The quick brown fox — Maven Pro</td>
+          </tr>
+          <tr>
+            <td><code>$font-icons</code></td>
+            <td>'iberia'</td>
+            <td class="family-preview" style="font-family: verdana, sans-serif; font-style: italic;">[Iconos: fuente iberia]</td>
+          </tr>
+          <tr>
+            <td><code>$font-text</code></td>
+            <td>'iberiatext', $font-normal</td>
+            <td class="family-preview" style="font-family: verdana, sans-serif;">Iberia Text — fallback verdana</td>
+          </tr>
+          <tr>
+            <td><code>$font-special-bold</code></td>
+            <td>'iberiaheadline-bold', $font-normal</td>
+            <td class="family-preview" style="font-family: 'Maven Pro', sans-serif; font-weight: 700;">Iberia Headline Bold</td>
+          </tr>
+          <tr>
+            <td><code>$font-reset</code></td>
+            <td>monospace, serif</td>
+            <td class="family-preview" style="font-family: monospace, serif;">monospace serif code</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="section-sizes" class="section-content">
+      <h2>Font Sizes</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Base: 16px · Headings en <code>_settings__headings.scss</code> · rem(N) con base 16px</p>
+
+      <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #555;">Headings (variables)</h3>
+      <div class="typography-grid">
+        <div class="typography-card">
+          <div class="typography-card__preview" style="font-size: 2.375rem;">Heading 1 — 38px</div>
+          <div class="typography-card__meta"><span>$wefront-heading-size-1: 38</span><span>Desktop</span></div>
+        </div>
+        <div class="typography-card">
+          <div class="typography-card__preview" style="font-size: 1.875rem;">Heading 2 — 30px</div>
+          <div class="typography-card__meta"><span>$wefront-heading-size-2: 30</span></div>
+        </div>
+        <div class="typography-card">
+          <div class="typography-card__preview" style="font-size: 1.625rem;">Heading 3 — 26px</div>
+          <div class="typography-card__meta"><span>$wefront-heading-size-3: 26</span></div>
+        </div>
+        <div class="typography-card">
+          <div class="typography-card__preview" style="font-size: 1.375rem;">Heading 4 — 22px</div>
+          <div class="typography-card__meta"><span>$wefront-heading-size-4: 22</span></div>
+        </div>
+        <div class="typography-card">
+          <div class="typography-card__preview" style="font-size: 1.25rem;">Heading 5 — 20px</div>
+          <div class="typography-card__meta"><span>$wefront-heading-size-5: 20</span></div>
+        </div>
+        <div class="typography-card">
+          <div class="typography-card__preview" style="font-size: 0.8125rem;">Heading 6 — 13px</div>
+          <div class="typography-card__meta"><span>$wefront-heading-size-6: 13</span></div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #555;">Escala rem() usada en componentes</h3>
+      <div class="size-scale">
+        <div class="size-item"><span class="size-item__label">rem(10)</span><span class="size-item__preview" style="font-size: 0.625rem;">Texto muy pequeño — 10px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(12)</span><span class="size-item__preview" style="font-size: 0.75rem;">Texto pequeño — 12px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(13)</span><span class="size-item__preview" style="font-size: 0.8125rem;">Texto base reducido — 13px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(14)</span><span class="size-item__preview" style="font-size: 0.875rem;">Texto estándar pequeño — 14px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(15)</span><span class="size-item__preview" style="font-size: 0.9375rem;">Texto medio — 15px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(16)</span><span class="size-item__preview" style="font-size: 1rem;">Texto base — 16px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(18)</span><span class="size-item__preview" style="font-size: 1.125rem;">Subtítulo — 18px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(20)</span><span class="size-item__preview" style="font-size: 1.25rem;">Título pequeño — 20px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(24)</span><span class="size-item__preview" style="font-size: 1.5rem;">Título — 24px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(26)</span><span class="size-item__preview" style="font-size: 1.625rem;">Título grande — 26px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(29)</span><span class="size-item__preview" style="font-size: 1.8125rem;">Destacado — 29px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(30)</span><span class="size-item__preview" style="font-size: 1.875rem;">Display pequeño — 30px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(32)</span><span class="size-item__preview" style="font-size: 2rem;">Display — 32px</span></div>
+        <div class="size-item"><span class="size-item__label">rem(36)</span><span class="size-item__preview" style="font-size: 2.25rem;">Display grande — 36px</span></div>
+      </div>
+    </section>
+
+    <section id="section-lineheights" class="section-content">
+      <h2>Line Heights</h2>
+      <p style="margin-bottom: 1rem; color: #777; font-size: 0.9rem;">Base: 1.2 (<code>$wefront__base-line-height</code>) · Valores más usados en componentes</p>
+
+      <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #555;">Numéricos (adimensionales)</h3>
+      <div class="line-height-grid">
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.1;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.1</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.2;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.2 (base)</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.3;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.3</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.4;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.4</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.5;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.5</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.6</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.7;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.7</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 1.85;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</div><div class="lh-card__value">line-height: 1.85</div></div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #555;">Porcentaje</h3>
+      <div class="line-height-grid">
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 100%;">Line-height 100%</div><div class="lh-card__value">line-height: 100%</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 120%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div><div class="lh-card__value">line-height: 120%</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 200%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div><div class="lh-card__value">line-height: 200%</div></div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin: 1.5rem 0 0.75rem; color: #555;">Valores fijos (px / rem)</h3>
+      <div class="line-height-grid">
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 16px; font-size: 14px;">16px line-height</div><div class="lh-card__value">line-height: 16px</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 18px; font-size: 14px;">18px line-height</div><div class="lh-card__value">line-height: 18px</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 22px; font-size: 14px;">22px line-height</div><div class="lh-card__value">line-height: 22px</div></div>
+        <div class="lh-card"><div class="lh-card__preview" style="line-height: 24px; font-size: 14px;">24px line-height</div><div class="lh-card__value">line-height: 24px</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Tipografía definida en <code>styles/scss/settings/_settings__config.scss</code> y <code>_settings__headings.scss</code> · <a href="index.html">Showcase</a> · <a href="spacing.html">Spacing</a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.dataset.tab;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('section-' + tabId).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

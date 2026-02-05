@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IB Style Modules — Paleta de colores</title>
+  <style>
+    :root {
+      --primary: #d7192d;
+      --secondary: #a80e1f;
+      --gray-10: #333;
+      --gray-50: #eee;
+      --gray-60: #fafafa;
+      --gray-135: #f9f9f9;
+      --gray-160: #112033;
+      --yellow-10: #fcd100;
+      --white: #fff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: verdana, arial, helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.2;
+      color: var(--gray-10);
+      background: var(--gray-135);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #fff;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(215, 25, 45, 0.25);
+    }
+
+    .header__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .ib-showcase-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--yellow-10);
+      color: var(--gray-160);
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+
+    .header p {
+      opacity: 0.92;
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    .header__source {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      opacity: 0.85;
+      font-family: ui-monospace, monospace;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gray-160);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-50);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    section h2::before {
+      content: '';
+      width: 4px;
+      height: 1.1em;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-swatch {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+
+    .color-swatch:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .color-swatch__block {
+      height: 90px;
+    }
+
+    .color-swatch__info {
+      padding: 0.6rem 0.85rem;
+    }
+
+    .color-swatch__label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.3;
+    }
+
+    .color-swatch__hex {
+      font-size: 0.72rem;
+      font-family: ui-monospace, 'SF Mono', monospace;
+      color: #777;
+      margin-top: 0.15rem;
+    }
+
+    .color-swatch--light .color-swatch__info {
+      border-top: 1px solid #eee;
+    }
+
+    .color-swatch--dark .color-swatch__label,
+    .color-swatch--dark .color-swatch__hex {
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .color-swatch--dark .color-swatch__info {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      position: sticky;
+      top: 0;
+      background: var(--gray-135);
+      padding: 0.5rem 0;
+      z-index: 10;
+    }
+
+    .tab {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: inherit;
+      border: none;
+      border-radius: 8px;
+      background: var(--white);
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    .tab:hover {
+      background: #eee;
+      color: #333;
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .section-content {
+      display: none;
+    }
+
+    .section-content.active {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: var(--gray-160);
+      color: #fff;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--yellow-10);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <h1>Paleta de colores IB Style Modules <span class="ib-showcase-badge">Design System</span></h1>
+      <p>Showcase completo de la paleta definida en el proyecto</p>
+      <p class="header__source">Fuente: styles/scss/settings/_settings__colors.scss</p>
+      <nav style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="index.html" style="color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.85rem; padding: 0.25rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.1);">Showcase</a>
+        <a href="typography.html" style="color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.85rem; padding: 0.25rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.1);">Tipografía</a>
+        <a href="spacing.html" style="color: rgba(255,255,255,0.95); text-decoration: none; font-size: 0.85rem; padding: 0.25rem 0.5rem; border-radius: 4px; background: rgba(255,255,255,0.1);">Spacing</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="brand" role="tab">Principales</button>
+      <button class="tab" data-tab="gray" role="tab">Grises</button>
+      <button class="tab" data-tab="red" role="tab">Rojos</button>
+      <button class="tab" data-tab="yellow" role="tab">Amarillos</button>
+      <button class="tab" data-tab="orange" role="tab">Naranjas</button>
+      <button class="tab" data-tab="pink" role="tab">Rosas</button>
+      <button class="tab" data-tab="purple" role="tab">Púrpuras</button>
+      <button class="tab" data-tab="green" role="tab">Verdes</button>
+      <button class="tab" data-tab="blue" role="tab">Azules</button>
+      <button class="tab" data-tab="social" role="tab">Redes sociales</button>
+    </nav>
+
+    <section id="section-brand" class="section-content active">
+      <h2>Colores principales y base</h2>
+      <div class="color-grid" id="brand-colors"></div>
+    </section>
+
+    <section id="section-gray" class="section-content">
+      <h2>Grises</h2>
+      <div class="color-grid" id="gray-colors"></div>
+    </section>
+
+    <section id="section-red" class="section-content">
+      <h2>Rojos</h2>
+      <div class="color-grid" id="red-colors"></div>
+    </section>
+
+    <section id="section-yellow" class="section-content">
+      <h2>Amarillos</h2>
+      <div class="color-grid" id="yellow-colors"></div>
+    </section>
+
+    <section id="section-orange" class="section-content">
+      <h2>Naranjas</h2>
+      <div class="color-grid" id="orange-colors"></div>
+    </section>
+
+    <section id="section-pink" class="section-content">
+      <h2>Rosas</h2>
+      <div class="color-grid" id="pink-colors"></div>
+    </section>
+
+    <section id="section-purple" class="section-content">
+      <h2>Púrpuras</h2>
+      <div class="color-grid" id="purple-colors"></div>
+    </section>
+
+    <section id="section-green" class="section-content">
+      <h2>Verdes</h2>
+      <div class="color-grid" id="green-colors"></div>
+    </section>
+
+    <section id="section-blue" class="section-content">
+      <h2>Azules</h2>
+      <div class="color-grid" id="blue-colors"></div>
+    </section>
+
+    <section id="section-social" class="section-content">
+      <h2>Redes sociales</h2>
+      <div class="color-grid" id="social-colors"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Paleta definida en <code>styles/scss/settings/_settings__colors.scss</code> · <a href="index.html">Showcase</a> · <a href="typography.html">Tipografía</a> · <a href="spacing.html">Spacing</a>
+  </footer>
+
+  <script>
+    const palette = {
+      brand: [
+        { name: 'primary', hex: '#d7192d', dark: true },
+        { name: 'secondary', hex: '#b9191a', dark: true },
+        { name: 'button-primary', hex: '#d7192d', dark: true },
+        { name: 'button-secondary', hex: '#777', dark: true },
+        { name: 'shadow', hex: '#555', dark: true },
+        { name: 'white', hex: '#fff', dark: false },
+        { name: 'black', hex: '#000', dark: true },
+        { name: 'mark', hex: '#ff0', dark: false }
+      ],
+      gray: [
+        { name: 'gray-10', hex: '#333', dark: true },
+        { name: 'gray-15', hex: '#666', dark: true },
+        { name: 'gray-20', hex: '#999', dark: true },
+        { name: 'gray-25', hex: '#ddd', dark: false },
+        { name: 'gray-30', hex: '#777', dark: true },
+        { name: 'gray-40', hex: '#ccc', dark: false },
+        { name: 'gray-50', hex: '#eee', dark: false },
+        { name: 'gray-60', hex: '#fafafa', dark: false },
+        { name: 'gray-65', hex: '#fbfbfb', dark: false },
+        { name: 'gray-70', hex: '#ddd', dark: false },
+        { name: 'gray-75', hex: '#5e5e5e', dark: true },
+        { name: 'gray-80', hex: '#454240', dark: true },
+        { name: 'gray-85', hex: '#989898', dark: true },
+        { name: 'gray-90', hex: '#e6e6e6', dark: false },
+        { name: 'gray-95', hex: '#979797', dark: true },
+        { name: 'gray-100', hex: '#d8d8d8', dark: false },
+        { name: 'gray-105', hex: '#bebebe', dark: true },
+        { name: 'gray-110', hex: '#d7d7d7', dark: false },
+        { name: 'gray-115', hex: '#9b9b9b', dark: true },
+        { name: 'gray-120', hex: '#a9a9a9', dark: true },
+        { name: 'gray-125', hex: '#ececec', dark: false },
+        { name: 'gray-130', hex: '#383838', dark: true },
+        { name: 'gray-135', hex: '#f9f9f9', dark: false },
+        { name: 'gray-140', hex: '#dadada', dark: false },
+        { name: 'gray-150', hex: '#f8f8f8', dark: false },
+        { name: 'gray-160', hex: '#112033', dark: true },
+        { name: 'gray-170', hex: '#f6f6f6', dark: false },
+        { name: 'gray-180', hex: '#4b6281', dark: true },
+        { name: 'gray-190', hex: '#e5e0db', dark: false },
+        { name: 'gray-200', hex: '#a6937d', dark: true },
+        { name: 'gray-210', hex: '#ece8e8', dark: false },
+        { name: 'gray-220', hex: '#f3f3f3', dark: false },
+        { name: 'gray-230', hex: '#dfdfdf', dark: false },
+        { name: 'gray-240', hex: '#eaeaea', dark: false },
+        { name: 'gray-250', hex: '#717171', dark: true },
+        { name: 'gray-260', hex: '#948b81', dark: true },
+        { name: 'gray-270', hex: '#bbb', dark: false },
+        { name: 'gray-280', hex: '#565656', dark: true },
+        { name: 'gray-285', hex: '#f1f1f1', dark: false },
+        { name: 'gray-290', hex: '#424242', dark: true },
+        { name: 'gray-291', hex: '#595959', dark: true },
+        { name: 'gray-295', hex: '#ece7e1', dark: false },
+        { name: 'gray-300', hex: '#e1e3e3', dark: false }
+      ],
+      red: [
+        { name: 'red-10', hex: '#d7192d', dark: true },
+        { name: 'red-20', hex: '#a80e1f', dark: true },
+        { name: 'red-30', hex: '#6f000c', dark: true },
+        { name: 'red-40', hex: '#a90e1f', dark: true },
+        { name: 'red-50', hex: '#a8191a', dark: true },
+        { name: 'red-60', hex: '#c21924', dark: true },
+        { name: 'red-70', hex: '#aa5512', dark: true },
+        { name: 'red-80', hex: '#eb0020', dark: true },
+        { name: 'red-90', hex: '#be5556', dark: true }
+      ],
+      yellow: [
+        { name: 'yellow-10', hex: '#fcd100', dark: false },
+        { name: 'yellow-20', hex: '#d68726', dark: true },
+        { name: 'yellow-30', hex: '#fef1b2', dark: false },
+        { name: 'yellow-40', hex: '#b96500', dark: true },
+        { name: 'yellow-50', hex: '#feed99', dark: false },
+        { name: 'yellow-60', hex: '#e1ad00', dark: true },
+        { name: 'yellow-70', hex: '#fac710', dark: false }
+      ],
+      orange: [
+        { name: 'orange-10', hex: '#f08400', dark: true },
+        { name: 'orange-20', hex: '#cc6715', dark: true },
+        { name: 'orange-30', hex: '#d68726', dark: true },
+        { name: 'orange-40', hex: '#f7e8d5', dark: false },
+        { name: 'orange-50', hex: '#f76b1c', dark: true },
+        { name: 'orange-60', hex: '#d76413', dark: true }
+      ],
+      pink: [
+        { name: 'pink-10', hex: '#a20067', dark: true },
+        { name: 'pink-20', hex: '#7e0251', dark: true },
+        { name: 'pink-30', hex: '#f3cdd1', dark: false },
+        { name: 'pink-40', hex: '#e24585', dark: true },
+        { name: 'pink-50', hex: '#c12b68', dark: true },
+        { name: 'pink-60', hex: '#f8dfe9', dark: false },
+        { name: 'pink-70', hex: '#e7aeb4', dark: true }
+      ],
+      purple: [
+        { name: 'purple-10', hex: '#7a5573', dark: true },
+        { name: 'purple-20', hex: '#553e51', dark: true },
+        { name: 'purple-30', hex: '#d6cfd5', dark: false },
+        { name: 'purple-40', hex: '#a11669', dark: true }
+      ],
+      green: [
+        { name: 'green-10', hex: '#008673', dark: true },
+        { name: 'green-20', hex: '#349475', dark: true },
+        { name: 'green-30', hex: '#007a69', dark: true }
+      ],
+      blue: [
+        { name: 'blue-10', hex: '#6c7dab', dark: true },
+        { name: 'blue-20', hex: '#7dc1c2', dark: true }
+      ],
+      social: [
+        { name: 'facebook', hex: '#3b5998', dark: true },
+        { name: 'facebook-2', hex: '#3e61ad', dark: true },
+        { name: 'facebook-hover', hex: '#2c4373', dark: true },
+        { name: 'linkedin', hex: '#007bb6', dark: true },
+        { name: 'linkedin-hover', hex: '#006899', dark: true },
+        { name: 'bizum', hex: '#05c0c7', dark: true },
+        { name: 'bizum-hover', hex: '#5edadf', dark: false }
+      ]
+    };
+
+    function renderSwatches(containerId, colors) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = colors.map(c => `
+        <div class="color-swatch ${c.dark ? 'color-swatch--dark' : 'color-swatch--light'}">
+          <div class="color-swatch__block" style="background: ${c.hex}"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__label">${c.name}</div>
+            <div class="color-swatch__hex">${c.hex}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    Object.entries(palette).forEach(([key, colors]) => {
+      const containerId = `${key}-colors`;
+      renderSwatches(containerId, colors);
+    });
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.dataset.tab;
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(`section-${tabId}`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

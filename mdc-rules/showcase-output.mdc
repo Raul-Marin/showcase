@@ -1,0 +1,29 @@
+---
+description: Formato de output para respuestas sobre colores, tipografía y documentación
+globs: showcase/**/*
+alwaysApply: false
+---
+
+# Showcase — Formato de output
+
+Cuando se pida listar colores, tipografía o documentar el design system:
+
+## Colores
+
+- Agrupar por familia: Principales, Grises, Rojos, Amarillos, Naranjas, Rosas, Púrpuras, Verdes, Azules, Redes sociales.
+- Mostrar: variable/alias, hex, uso breve cuando proceda.
+- Usar tablas markdown con columnas: Variable | Hex | Uso.
+
+## Tipografía
+
+Separar en tres secciones:
+
+1. **Font Family**: variable, valor, preview (texto de ejemplo).
+2. **Font Size**: variable o escala (rem/px), descripción.
+3. **Line Height**: valor, unidad (numérico, %, px, rem).
+
+## Respuestas a peticiones de listados
+
+- Priorizar claridad sobre exhaustividad si el listado es muy largo.
+- Para paleta completa, remitir a `_settings__colors.scss` o al showcase `colors.html`.
+- Para tipografía, remitir a `_settings__config.scss`, `_settings__headings.scss` o `typography.html`.

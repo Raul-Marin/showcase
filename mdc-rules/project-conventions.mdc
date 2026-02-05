@@ -1,0 +1,60 @@
+---
+description: Normas de output y convenciones del proyecto IB Style Modules
+alwaysApply: true
+---
+
+# IB Style Modules — Convenciones y normas de output
+
+## Proyecto
+
+Sistema de estilos y componentes visuales de Iberia (líneas aéreas). Incluye SCSS, componentes AngularJS/JS, y un showcase HTML de documentación.
+
+## Idioma y formato de respuesta
+
+- **Idioma**: Responder en español por defecto, salvo que el usuario pida explícitamente otro idioma.
+- **Estructura**: Usar listas, tablas y secciones con encabezados (##, ###) para organizar información.
+- **Código**: Usar bloques de código con sintaxis destacada (```scss, ```html, ```js).
+- **Brevedad**: Ir al grano; evitar explicaciones innecesarias si no se piden.
+- **Ediciones**: Solo modificar archivos cuando el usuario lo solicite explícitamente; no hacer cambios "preventivos".
+
+## Ubicaciones clave
+
+| Recurso | Ruta |
+|---------|------|
+| Colores | `styles/scss/settings/_settings__colors.scss` |
+| Config (fonts, base) | `styles/scss/settings/_settings__config.scss` |
+| Headings | `styles/scss/settings/_settings__headings.scss` |
+| Showcase | `showcase/` (index.html, colors.html, typography.html) |
+| Componentes SCSS | `styles/scss/components/` |
+
+## Paleta de colores
+
+- **Primary**: `#d7192d` (rojo Iberia)
+- **Secondary**: `#b9191a`
+- **Texto base**: `gray-10` (#333)
+- **Fondos claros**: `gray-50` (#eee), `gray-60` (#fafafa), `gray-135` (#f9f9f9)
+- **Accent oscuro**: `gray-160` (#112033) — headers, footers
+
+Usar variables del `$color-map` en lugar de hex directos cuando sea posible.
+
+## Tipografía
+
+- **Familia base**: `$font-normal` (verdana, arial, helvetica, sans-serif)
+- **Títulos**: `$font-special` (iberiaheadline)
+- **Iconos**: `$font-icons` (iberia)
+- **Tamaño base**: 16px
+- **Line-height base**: 1.2
+
+Escala de tamaños: rem(10) a rem(36) para texto; headings 38/30/26/22/20/13px.
+
+## Namespace
+
+Prefijo de clases y componentes: `ib-` (`$wefront__namespace`).
+
+## Showcase
+
+- Páginas HTML autocontenidas con CSS inline.
+- Enlaces entre index, colors, typography y spacing.
+- Diseño consistente: header con gradiente rojo Iberia, fondo #f9f9f9, footer #112033.
+- **Header home (index.html)**: layout flexible (`display: flex`, `flex-direction: column`), sin `header__inner`.
+- **Header resto (colors, typography, spacing)**: layout con `header__inner` (max-width 1400px, centrado tipo grid).
