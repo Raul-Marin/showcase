@@ -19,17 +19,6 @@ Este repositorio es un **showcase** de módulos de estilo (colores, tipografía,
 | [Tipografía](typography.html) | Estilos de texto                  |
 | [Spacing](spacing.html) | Escala de espaciado                  |
 
-## Cómo publicar en GitHub Pages
-
-1. Sube el repositorio a GitHub.
-2. Ve a **Settings → Pages**.
-3. En **Source** elige **Deploy from a branch**.
-4. Branch: `main`, carpeta: **/ (root)**.
-5. Guarda. En unos segundos la URL será:  
-   `https://<tu-usuario>.github.io/<nombre-repo>/`
-
-La página de entrada será `index.html` (showcase principal). También existe **`pages.html`** como página de bienvenida/resumen para GitHub Pages, con enlaces al showcase y al resto de páginas.
-
 ## Tecnologías
 
 - HTML y CSS en línea (sin build).
