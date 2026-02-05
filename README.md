@@ -14,7 +14,8 @@ Este repositorio es un **showcase** de módulos de estilo (colores, tipografía,
 
 | Página        | Descripción                          |
 |--------------|--------------------------------------|
-| [Showcase](index.html)   | Resumen: colores, botones y tarjetas |
+| [Inicio](index.html)   | Página de bienvenida (primera del repo) |
+| [Showcase](showcase.html)   | Resumen: colores, botones y tarjetas |
 | [Colores](colors.html)   | Paleta completa con pestañas         |
 | [Tipografía](typography.html) | Estilos de texto                  |
 | [Spacing](spacing.html) | Escala de espaciado                  |

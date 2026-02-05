@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IB Style Modules — Showcase</title>
+  <style>
+    :root {
+      --primary: #d7192d;
+      --secondary: #b9191a;
+      --white: #fff;
+      --black: #000;
+      --gray-10: #333;
+      --gray-30: #777;
+      --gray-50: #eee;
+      --gray-60: #fafafa;
+      --gray-130: #383838;
+      --gray-135: #f9f9f9;
+      --gray-160: #112033;
+      --yellow-10: #fcd100;
+      --red-20: #a80e1f;
+      --orange-10: #f08400;
+      --green-10: #008673;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: verdana, arial, helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.2;
+      color: var(--gray-10);
+      background: var(--gray-135);
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      background: var(--primary);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gray-160);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .color-swatch:hover {
+      transform: translateY(-2px);
+    }
+
+    .color-swatch__block {
+      height: 80px;
+    }
+
+    .color-swatch__label {
+      padding: 0.5rem 0.75rem;
+      background: var(--white);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--gray-10);
+    }
+
+    .color-swatch__hex {
+      padding: 0 0.75rem 0.5rem;
+      font-size: 0.7rem;
+      font-family: monospace;
+      color: var(--gray-30);
+    }
+
+    .buttons-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn--primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn--primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn--secondary {
+      background: var(--gray-30);
+      color: var(--white);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn--outline:hover {
+      background: rgba(215, 25, 45, 0.08);
+    }
+
+    .cards-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid var(--gray-50);
+    }
+
+    .card__strip {
+      height: 4px;
+      background: var(--primary);
+    }
+
+    .card__body {
+      padding: 1.25rem;
+    }
+
+    .card__body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray-160);
+      margin-bottom: 0.5rem;
+    }
+
+    .card__body p {
+      font-size: 0.875rem;
+      color: var(--gray-30);
+    }
+
+    .card--yellow .card__strip { background: var(--yellow-10); }
+    .card--green .card__strip { background: var(--green-10); }
+    .card--orange .card__strip { background: var(--orange-10); }
+
+    .footer {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--gray-160);
+      color: var(--white);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--yellow-10);
+      text-decoration: none;
+    }
+    .ib-showcase-badge {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--yellow-10);
+      color: var(--gray-160);
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>IB Style Modules <span class="ib-showcase-badge">Design System</span></h1>
+    <p>Showcase de la paleta de colores y componentes</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+      <a href="index.html" style="color: rgba(255,255,255,0.95); text-decoration: underline;">Inicio</a> ·
+      <a href="colors.html" style="color: rgba(255,255,255,0.95); text-decoration: underline;">Colores</a> ·
+      <a href="typography.html" style="color: rgba(255,255,255,0.95); text-decoration: underline;">Tipografía</a> ·
+      <a href="spacing.html" style="color: rgba(255,255,255,0.95); text-decoration: underline;">Spacing</a>
+    </p>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Colores de marca</h2>
+      <div class="color-grid" id="brand-colors"></div>
+    </section>
+
+    <section>
+      <h2>Grises</h2>
+      <div class="color-grid" id="gray-colors"></div>
+    </section>
+
+    <section>
+      <h2>Rojos</h2>
+      <div class="color-grid" id="red-colors"></div>
+    </section>
+
+    <section>
+      <h2>Amarillos y naranjas</h2>
+      <div class="color-grid" id="warm-colors"></div>
+    </section>
+
+    <section>
+      <h2>Verdes, azules y rosas</h2>
+      <div class="color-grid" id="other-colors"></div>
+    </section>
+
+    <section>
+      <h2>Botones</h2>
+      <div class="buttons-demo">
+        <button class="btn btn--primary">Primario</button>
+        <button class="btn btn--secondary">Secundario</button>
+        <button class="btn btn--outline">Outline</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tarjetas de ejemplo</h2>
+      <div class="cards-demo">
+        <article class="card">
+          <div class="card__strip"></div>
+          <div class="card__body">
+            <h3>Tarjeta principal</h3>
+            <p>Usa el rojo Iberia como acento.</p>
+          </div>
+        </article>
+        <article class="card card--yellow">
+          <div class="card__strip"></div>
+          <div class="card__body">
+            <h3>Tarjeta destacada</h3>
+            <p>Amarillo para ofertas o avisos.</p>
+          </div>
+        </article>
+        <article class="card card--green">
+          <div class="card__strip"></div>
+          <div class="card__body">
+            <h3>Tarjeta éxito</h3>
+            <p>Verde para confirmaciones.</p>
+          </div>
+        </article>
+        <article class="card card--orange">
+          <div class="card__strip"></div>
+          <div class="card__body">
+            <h3>Tarjeta aviso</h3>
+            <p>Naranja para advertencias.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Paleta definida en <code>styles/scss/settings/_settings__colors.scss</code>
+  </footer>
+
+  <script>
+    const palette = {
+      brand: [
+        { name: 'primary', hex: '#d7192d' },
+        { name: 'secondary', hex: '#b9191a' },
+        { name: 'white', hex: '#fff' },
+        { name: 'black', hex: '#000' },
+        { name: 'shadow', hex: '#555' }
+      ],
+      gray: [
+        { name: 'gray-10', hex: '#333' },
+        { name: 'gray-15', hex: '#666' },
+        { name: 'gray-20', hex: '#999' },
+        { name: 'gray-25', hex: '#ddd' },
+        { name: 'gray-30', hex: '#777' },
+        { name: 'gray-40', hex: '#ccc' },
+        { name: 'gray-50', hex: '#eee' },
+        { name: 'gray-60', hex: '#fafafa' },
+        { name: 'gray-75', hex: '#5e5e5e' },
+        { name: 'gray-80', hex: '#454240' },
+        { name: 'gray-90', hex: '#e6e6e6' },
+        { name: 'gray-100', hex: '#d8d8d8' },
+        { name: 'gray-125', hex: '#ececec' },
+        { name: 'gray-130', hex: '#383838' },
+        { name: 'gray-160', hex: '#112033' },
+        { name: 'gray-180', hex: '#4b6281' }
+      ],
+      red: [
+        { name: 'red-10', hex: '#d7192d' },
+        { name: 'red-20', hex: '#a80e1f' },
+        { name: 'red-30', hex: '#6f000c' },
+        { name: 'red-40', hex: '#a90e1f' },
+        { name: 'red-50', hex: '#a8191a' },
+        { name: 'red-60', hex: '#c21924' },
+        { name: 'red-80', hex: '#eb0020' }
+      ],
+      warm: [
+        { name: 'yellow-10', hex: '#fcd100' },
+        { name: 'yellow-20', hex: '#d68726' },
+        { name: 'yellow-30', hex: '#fef1b2' },
+        { name: 'yellow-40', hex: '#b96500' },
+        { name: 'orange-10', hex: '#f08400' },
+        { name: 'orange-20', hex: '#cc6715' },
+        { name: 'orange-40', hex: '#f7e8d5' },
+        { name: 'orange-50', hex: '#f76b1c' }
+      ],
+      other: [
+        { name: 'green-10', hex: '#008673' },
+        { name: 'green-20', hex: '#349475' },
+        { name: 'green-30', hex: '#007a69' },
+        { name: 'blue-10', hex: '#6c7dab' },
+        { name: 'blue-20', hex: '#7dc1c2' },
+        { name: 'pink-10', hex: '#a20067' },
+        { name: 'pink-30', hex: '#f3cdd1' },
+        { name: 'pink-40', hex: '#e24585' },
+        { name: 'purple-10', hex: '#7a5573' },
+        { name: 'purple-40', hex: '#a11669' },
+        { name: 'facebook', hex: '#3b5998' },
+        { name: 'linkedin', hex: '#007bb6' },
+        { name: 'bizum', hex: '#05c0c7' }
+      ]
+    };
+
+    function renderSwatches(containerId, colors) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = colors.map(c => `
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background: ${c.hex}"></div>
+          <div class="color-swatch__label">${c.name}</div>
+          <div class="color-swatch__hex">${c.hex}</div>
+        </div>
+      `).join('');
+    }
+
+    renderSwatches('brand-colors', palette.brand);
+    renderSwatches('gray-colors', palette.gray);
+    renderSwatches('red-colors', palette.red);
+    renderSwatches('warm-colors', palette.warm);
+    renderSwatches('other-colors', palette.other);
+  </script>
+</body>
+</html>
